@@ -16,7 +16,7 @@ import java.util.Random;
  */
 @WebServlet("/checkCode")
 public class CheckCodeServlet extends HttpServlet {
-	public void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+	public void doGet(HttpServletRequest request, HttpServletResponse response)throws IOException {
 
 		//服务器通知浏览器不要缓存
 		response.setHeader("pragma","no-cache");

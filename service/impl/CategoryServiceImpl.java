@@ -28,14 +28,14 @@ public class CategoryServiceImpl implements CategoryService {
 
         List<Category> cs;
         //2.判断查询的集合是否为空
-        if (categorys == null || categorys.size() == 0) {
+        if (categorys == null || categorys.isEmpty()) {
             System.out.println("从数据库查询");
             //3.如果为空，需要从数据库查询，再将数据存入redis
             //3.1从数据库中查询
             cs = dao.findAll();
             //3.2将集合数据存储到redis中的category的key中
-            for (int i = 0; i < cs.size(); i++) {
-                jedis.zadd("category", cs.get(i).getCid(), cs.get(i).getCname());
+            for (Category c : cs) {
+                jedis.zadd("category", c.getCid(), c.getCname());
             }
 
         } else {
