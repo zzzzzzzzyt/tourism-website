@@ -63,7 +63,7 @@ public class CheckCodeServlet extends HttpServlet {
 		String base = "0123456789ABCDEFGabcdefg";
 		int size = base.length();
 		Random r = new Random();
-		StringBuffer sb = new StringBuffer();
+		StringBuilder sb = new StringBuilder();
 		for(int i=1;i<=4;i++){
 			//产生0到size-1的随机值
 			int index = r.nextInt(size);
