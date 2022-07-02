@@ -9,7 +9,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 public class UserDaoImpl implements UserDao {
 
-    private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+    private final JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+
     @Override
     public User findByUsername(String username) {
         //出了异常 返回的值也是null
@@ -18,7 +19,7 @@ public class UserDaoImpl implements UserDao {
             //定义sql语句
             String sql = "select * from tab_user where username = ?";
             //执行sql
-            user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class),username);
+            user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username);
         } catch (Exception e) {
 
         }
@@ -31,19 +32,20 @@ public class UserDaoImpl implements UserDao {
         String sql = "insert into tab_user(username,password,name,birthday,sex,telephone,email,status,code)" +
                 "value(?,?,?,?,?,?,?,?,?)";
         //执行sql
-        template.update(sql,user.getUsername(),
-                            user.getPassword(),
-                            user.getName(),
-                            user.getBirthday(),
-                            user.getSex(),
-                            user.getTelephone(),
-                            user.getEmail(),
-                            user.getStatus(),
-                            user.getCode());
+        template.update(sql, user.getUsername(),
+                user.getPassword(),
+                user.getName(),
+                user.getBirthday(),
+                user.getSex(),
+                user.getTelephone(),
+                user.getEmail(),
+                user.getStatus(),
+                user.getCode());
     }
 
     /**
      * 根据激活码查询用户对象
+     *
      * @param code
      * @return
      */
@@ -61,12 +63,13 @@ public class UserDaoImpl implements UserDao {
 
     /**
      * 修改指定用户修改状态
+     *
      * @param user
      */
     @Override
     public void updateStatus(User user) {
         String sql = "update tab_user set status ='Y' where uid = ?";
-        template.update(sql,user.getUid());
+        template.update(sql, user.getUid());
 
     }
 
@@ -75,7 +78,7 @@ public class UserDaoImpl implements UserDao {
         String sql = "select * from tab_user where username=? and password = ?";
         User user = null;
         try {
-            user = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username, password);
+            user = template.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), username, password);
         } catch (Exception e) {
             e.printStackTrace();
         }
