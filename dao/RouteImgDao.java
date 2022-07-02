@@ -11,5 +11,5 @@ public interface RouteImgDao {
      * @param rid
      * @return
      */
-    public List<RouteImg> findByRid(int rid);
+    List<RouteImg> findByRid(int rid);
 }

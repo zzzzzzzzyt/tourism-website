@@ -12,7 +12,7 @@ public interface FavoriteDao {
      * @param uid
      * @return
      */
-    public Favorite findByRidAndUid(int rid, int uid);
+    Favorite findByRidAndUid(int rid, int uid);
 
     /**
      * 根据线路的id查询收藏次数
