@@ -8,6 +8,7 @@ public interface FavoriteDao {
 
     /**
      * 根据rid和uid查询收藏信息
+     *
      * @param rid
      * @param uid
      * @return
@@ -16,6 +17,7 @@ public interface FavoriteDao {
 
     /**
      * 根据线路的id查询收藏次数
+     *
      * @param rid
      * @return
      */
@@ -23,6 +25,7 @@ public interface FavoriteDao {
 
     /**
      * 添加收藏
+     *
      * @param parseInt
      * @param uid
      */
@@ -30,6 +33,7 @@ public interface FavoriteDao {
 
     /**
      * 查找图片
+     *
      * @param uid
      * @return
      */
