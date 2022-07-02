@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RouteDaoImpl implements RouteDao {
-    private JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
+    private final JdbcTemplate template = new JdbcTemplate(JDBCUtils.getDataSource());
     @Override
     public int findTotalCount(int cid,String rname) {
         //String sql = "select count(*) from tab_route where cid = ?";因为有些情况下cid不存在就无法查询无法查询
